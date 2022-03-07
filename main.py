@@ -71,7 +71,6 @@ for slovo in slova_textu:
 
     if ciste_slovo != "":
         ciste_slova.append(ciste_slovo)
-
     if ciste_slovo.istitle():
         zaciatocne_pismena.append(slovo)
     if ciste_slovo.isupper():
