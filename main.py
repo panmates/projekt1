@@ -3,7 +3,7 @@ Situated about 10 miles west of Kemmerer,
 Fossil Butte is a ruggedly impressive
 topographic feature that rises sharply
 some 1000 feet above Twin Creek Valley
-to an elevation of more than 7500 feet
+to an elevation of , more , than 7500 feet
 above sea level. The butte is located just
 north of US 30N and the Union Pacific Railroad,
 which traverse the valley. ''',
@@ -64,9 +64,13 @@ print(oddelovac)
 TEXT = TEXTS[int(cislo_textu) - 1]
 slova_textu = TEXT.split()
 
+pocetnost_slov = {}
+
 for slovo in slova_textu:
-    ciste_slovo = slovo.strip(".,-")
-    ciste_slova.append(ciste_slovo)
+    ciste_slovo = slovo.strip(".,-,")
+
+    if ciste_slovo != "":
+        ciste_slova.append(ciste_slovo)
 
     if ciste_slovo.istitle():
         zaciatocne_pismena.append(slovo)
@@ -78,6 +82,7 @@ for slovo in slova_textu:
         pocet_cisel.append(slovo)
         suma += int(slovo)
 
+    pocetnost_slov[len(slovo)] = pocetnost_slov.get(len(slovo), 0) + 1
 print(
     f"There are {len(ciste_slova)} words in the selected text.",
     f"There are {len(zaciatocne_pismena)} titlecase words.",
@@ -99,12 +104,15 @@ for slovo in ciste_slova:
 print("LEN |", "OCCURENCES", " | NR.")
 print(oddelovac)
 
-najcastejsi = sorted(slovnik_vyskytov, key=slovnik_vyskytov.get, reverse=True)[:10]
+
+najcastejsi = sorted(pocetnost_slov, key=pocetnost_slov.get, reverse=True)[:10]
+
 for index, _ in enumerate(range(len(najcastejsi), 0, -1), 1):
     print(f" {index:2}", end=" | ")
     for item in najcastejsi:
-        print("*" * int(slovnik_vyskytov[item]), " " * (10 - int(slovnik_vyskytov[item])), "|", slovnik_vyskytov[item])
-        najcastejsi.remove(item)
-        break
+      print("*" * item, " " * (10 - item), pocetnost_slov[item])
+      najcastejsi.remove(item)
+      break
+
 print(oddelovac)
 exit()
