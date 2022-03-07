@@ -83,6 +83,7 @@ for slovo in slova_textu:
         suma += int(slovo)
 
     pocetnost_slov[len(slovo)] = pocetnost_slov.get(len(slovo), 0) + 1
+
 print(
     f"There are {len(ciste_slova)} words in the selected text.",
     f"There are {len(zaciatocne_pismena)} titlecase words.",
@@ -103,7 +104,6 @@ for slovo in ciste_slova:
 
 print("LEN |", "OCCURENCES", " | NR.")
 print(oddelovac)
-
 
 najcastejsi = sorted(pocetnost_slov, key=pocetnost_slov.get, reverse=True)[:10]
 
