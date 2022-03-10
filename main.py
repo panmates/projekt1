@@ -95,12 +95,6 @@ print(
 
 print(oddelovac)
 
-slovnik_vyskytov = {}
-for slovo in ciste_slova:
-    if slovo in slovnik_vyskytov:
-        continue
-    slovnik_vyskytov[slovo] = ciste_slova.count(slovo)
-
 print("{:>4}|{:<18}| {}".format("LEN","OCCURENCES", "NR."))
 
 pocetnost_slov_zoradene = dict(sorted(pocetnost_slov.items())) 
