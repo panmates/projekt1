@@ -91,7 +91,7 @@ print(
     f"There are {len(pocet_cisel)} numeric strings.",
     f"The sum of all the numbers {suma}.",
     sep="\n"
-)
+    )
 
 print(oddelovac)
 
@@ -101,17 +101,12 @@ for slovo in ciste_slova:
         continue
     slovnik_vyskytov[slovo] = ciste_slova.count(slovo)
 
-print("LEN |", "OCCURENCES", " | NR.")
-print(oddelovac)
+print("{:>4}|{:<18}| {}".format("LEN","OCCURENCES", "NR."))
 
-najcastejsi = sorted(pocetnost_slov, key=pocetnost_slov.get, reverse=True)[:10]
+pocetnost_slov_zoradene = dict(sorted(pocetnost_slov.items())) 
 
-for index, _ in enumerate(range(len(najcastejsi), 0, -1), 1):
-    print(f" {index:2}", end=" | ")
-    for item in najcastejsi:
-      print("*" * item, " " * (10 - item), pocetnost_slov[item])
-      najcastejsi.remove(item)
-      break
-
+for k in pocetnost_slov_zoradene:
+  print("{:>4}|{:<18}| {}".format(k, "*" * pocetnost_slov_zoradene[k], pocetnost_slov_zoradene[k]))
+  
 print(oddelovac)
 exit()
